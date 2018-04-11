@@ -105,13 +105,14 @@ PHP_METHOD(lapi_application, run)
     smart_str ppstr = {0};
     php_json_encode(&ppstr, &result, 0);
 
+    php_printf(ZSTR_VAL(ppstr.s));
+
     zval_ptr_dtor(&controller_obj);
     zval_ptr_dtor(&result);
     zend_string_release(delimiter);
     zend_string_release(controller_str);
     zend_string_release(pstr.s);
 
-    php_printf(ZSTR_VAL(ppstr.s));
 
     zend_string_release(ppstr.s);
 }
